@@ -1,0 +1,26 @@
+---
+Language: ObjC
+BasedOnStyle:  LLVM
+ObjCSpaceAfterProperty: true
+ColumnLimit: 0
+ObjCBlockIndentWidth: 4
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+IndentWidth: 4
+TabWidth: 4
+AlignTrailingComments: true
+BreakBeforeBraces: Allman
+BraceWrapping:   
+  AfterClass:      true
+  AfterControlStatement: false
+  AfterEnum:       false
+  AfterFunction:   true
+  AfterNamespace:  false
+  AfterObjCDeclaration: true
+  AfterStruct:     false
+  AfterUnion:      false
+  BeforeCatch:     true
+  BeforeElse:      true
+  IndentBraces:    false
+
+...
