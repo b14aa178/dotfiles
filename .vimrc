@@ -1,12 +1,13 @@
-
 "插件管理
 
 call plug#begin('~/.vim/plugged')
 Plug 'Valloric/YouCompleteMe'
 Plug 'morhetz/gruvbox'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'itchyny/lightline.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'itchyny/lightline.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 
@@ -25,13 +26,15 @@ set fillchars=vert:\
 set backspace=2
 set number
 set cursorline
-set cursorcolumn
+"set cursorcolumn
 set nospell
 set clipboard=unnamed
 set noexpandtab
 set ignorecase
+set incsearch
 set nowrap
 set nostartofline
+set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -47,8 +50,9 @@ set shortmess+=I
 set termguicolors
 set completeopt-=preview
 set guicursor=
-
-
+set mouse=a
+set showtabline=0
+set wildignore=*.o,*.obj,*.dll,*.exe,*.deb
 
 "按键相关
 inoremap jk <esc>
@@ -56,17 +60,16 @@ inoremap jk <esc>
 map <C-b> <Nop>
 map <C-f> <Nop>
 
-map 0 <Nop>
-map $ <Nop>
 map t <Nop>
 map T <Nop>
 map W <Nop>
 map B <Nop>
 map E <Nop>
 map P <Nop>
-map H <Nop>
-map L <Nop>
+map H 0
+map L $
 map K <Nop>
+map J <Nop>
 
 map <C-h> <C-W>h
 map <C-l> <C-W>l
@@ -85,10 +88,12 @@ nnoremap <F4> :YcmCompleter GoToDeclaration<CR>
 map <leader>f :pyf /usr/local/Cellar/clang-format/2017-03-17/share/clang/clang-format.py<cr>
 imap <leader>f :pyf /usr/local/Cellar/clang-format/2017-03-17/share/clang/clang-format.py<cr>
 
+map . <Plug>Sneak_;
+map , <Plug>Sneak_,
 
 "界面相关
 
-colorscheme gruvbox
+colorscheme onedark
 
 "highlight NonText   cterm=NONE ctermbg=bg ctermfg=bg guibg=NONE guifg=NONE
 "highlight VertSplit ctermbg=bg ctermfg=DarkGrey
@@ -97,16 +102,21 @@ colorscheme gruvbox
 highlight EndOfBuffer ctermfg=bg guifg=bg
 highlight CursorLineNr ctermbg=bg guibg=bg
 
+set guifont=Monaco:h13
+
+
 
 "插件设置
 
 let g:ctrlp_map = 'P'
+let g:ctrlp_types = ['fil']
 let g:ctrlp_custom_ignore = {
 		\ 'dir':  '\v[\/]\.(git|hg|svn)$',
 		\ 'file': '\v\.(exe|so|dll|deb|png|jpg)$'
 		\ }
 
 
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_complete_in_comments = 0
@@ -115,11 +125,16 @@ let g:ycm_confirm_extra_conf=0
 let g:ycm_use_ultisnips_completer = 0
 let g:ycm_key_invoke_completion = '<leader>c'
 
+let g:sneak#use_ic_scs = 1
 
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'filename' ] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'absolutepath' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'inactive': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'absolutepath' ] ],
       \   'right': [ [ 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ }
