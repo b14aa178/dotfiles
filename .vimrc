@@ -1,13 +1,12 @@
 "插件管理
-
 call plug#begin('~/.vim/plugged')
 Plug 'Valloric/YouCompleteMe'
 Plug 'morhetz/gruvbox'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'justinmk/vim-sneak'
 Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'nanotech/jellybeans.vim'
 call plug#end()
 
 
@@ -52,7 +51,7 @@ set completeopt-=preview
 set guicursor=
 set mouse=a
 set showtabline=0
-set wildignore=*.o,*.obj,*.dll,*.exe,*.deb
+set wildignore=*.o,*.obj,*.dll,*.exe,*.deb,*.png
 
 "按键相关
 inoremap jk <esc>
@@ -93,7 +92,7 @@ map , <Plug>Sneak_,
 
 "界面相关
 
-colorscheme onedark
+colorscheme gruvbox
 
 "highlight NonText   cterm=NONE ctermbg=bg ctermfg=bg guibg=NONE guifg=NONE
 "highlight VertSplit ctermbg=bg ctermfg=DarkGrey
@@ -109,6 +108,7 @@ set guifont=Monaco:h13
 "插件设置
 
 let g:ctrlp_map = 'P'
+let g:ctrlp_working_path_mode = '0' 
 let g:ctrlp_types = ['fil']
 let g:ctrlp_custom_ignore = {
 		\ 'dir':  '\v[\/]\.(git|hg|svn)$',
