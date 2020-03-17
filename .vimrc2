@@ -1,0 +1,98 @@
+call plug#begin('~/.vim/plugged')
+Plug 'morhetz/gruvbox'
+Plug 'sheerun/vim-polyglot'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/seoul256.vim'
+
+if has('nvim')
+  Plug 'neovim/nvim-lsp'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'Shougo/deoplete-lsp'
+call plug#end()
+
+let g:deoplete#enable_at_startup = 1
+
+autocmd! FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+"vim ËÆæÁΩÆÁõ∏ÂÖ≥
+set encoding=utf-8
+scriptencoding utf-8
+
+set signcolumn=yes
+set termguicolors
+set number
+set nospell
+set clipboard=unnamed
+set noexpandtab
+set ignorecase
+set incsearch
+set nowrap
+set nostartofline
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set scrolloff=3
+set nobackup
+set noswapfile
+set showcmd
+set shortmess+=I
+set wildignore=*.o,*.obj,*.dll,*.exe,*.deb,*.png
+set bg=dark
+set cursorline
+set completeopt=menu,noinsert,noselect,menuone
+
+colorscheme gruvbox
+
+highlight EndOfBuffer ctermfg=bg guifg=bg
+
+
+inoremap jk <esc>
+
+map <C-b> <Nop>
+map <C-f> <Nop>
+
+map <C-p> :FZF<CR>
+
+map t <Nop>
+map T <Nop>
+map W <Nop>
+map B <Nop>
+map E <Nop>
+map P <Nop>
+map H 0
+map L $
+map K <Nop>
+map J <Nop>
+
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+
+map U <C-u>
+map D <C-d>
+
+nmap ; :
+vmap ; :
+
+
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'absolutepath' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'inactive': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'absolutepath' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ }
